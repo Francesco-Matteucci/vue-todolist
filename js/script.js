@@ -25,18 +25,22 @@ createApp({
         return {
             // Array dei todo
             todos: [
-                { text: 'Comprare il pane', done: false },
-                { text: 'Comprare il cocomero', done: true },
-                { text: 'Studiare Vue.js', done: false },
-                { text: 'Ordinare un lanciafiamme', done: true },
-                { text: 'Spegnere il sole', done: true },
-                { text: 'Superare la velocità della luce', done: false }
+                { id: 1, text: 'Comprare il pane', done: false },
+                { id: 2, text: 'Comprare il cocomero', done: true },
+                { id: 3, text: 'Studiare Vue.js', done: false },
+                { id: 4, text: 'Ordinare un lanciafiamme', done: true },
+                { id: 5, text: 'Spegnere il sole', done: true },
+                { id: 6, text: 'Superare la velocità della luce', done: false }
             ],
+
             // Variabile per il nuovo todo
             newTodoText: '',
             // Filtro selezionato
-            filter: 'all'
+            filter: 'all',
+            // Contatore per l'id ( partendo dall'id successivo al più alto presente nell'array )
+            nextTodoId: 7
         };
+
     },
     computed: {
 
@@ -62,9 +66,16 @@ createApp({
         // Creo una funzione per aggiungere un nuovo todo
         addTodo() {
             if (this.newTodoText.trim() !== '') {
-                this.todos.push({ text: this.newTodoText, done: false });
+                // Aggiungo il nuovo todo con un id incrementale
+                this.todos.push({
+                    id: this.nextTodoId++, // Incrementa il contatore per l'id
+                    text: this.newTodoText,
+                    done: false
+                });
                 // Resetto il campo input
                 this.newTodoText = '';
+                // Stampo in console
+                console.log(this.todos);
             }
         },
         // Creo una funzione per invertire il valore di done
@@ -73,3 +84,6 @@ createApp({
         }
     }
 }).mount('#app');
+
+
+//Abbiamo utilizzato il todo.text come key, ma se due todo avessero lo stesso testo, ciò potrebbe causare problemi. Quindi aggiungerò un identificatore univoco( un id ) per ogni todo, così da avere maggiore sicurezza.
