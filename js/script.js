@@ -33,8 +33,26 @@ createApp({
                 { text: 'Superare la velocità della luce', done: false }
             ],
             // Variabile per il nuovo todo
-            newTodoText: ''
+            newTodoText: '',
+            // Filtro selezionato
+            filter: 'all'
         };
+    },
+    computed: {
+
+        // Creo una funzione che restituisce i todo filtrati in base al filtro selezionato
+        filteredTodos() {
+            if (this.filter === 'active') {
+                return this.todos.filter(todo => !todo.done);
+            } else if (this.filter === 'completed') {
+                return this.todos.filter(todo => todo.done);
+            }
+            return this.todos;
+        },
+        // Creo una funzione che conta i todo che non sono stati ancora completati
+        remainingTodos() {
+            return this.todos.filter(todo => !todo.done).length;
+        }
     },
     methods: {
         // Creo una funzione per rimuovere il todo
