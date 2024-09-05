@@ -48,6 +48,10 @@ createApp({
                 // Resetto il campo input
                 this.newTodoText = '';
             }
+        },
+        // Creo una funzione per invertire il valore di done
+        toggleDone(todo) {
+            todo.done = !todo.done;
         }
     }
 }).mount('#app');

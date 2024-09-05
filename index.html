@@ -22,7 +22,7 @@
             <!-- Lista dei todo -->
             <li v-for="(todo, index) in todos" :key="index" class="list-group-item d-flex justify-content-between">
                 <!-- Se il todo è fatto, il testo è barrato -->
-                <span :class="{ 'text-decoration-line-through': todo.done }">
+                <span :class="{ 'text-decoration-line-through': todo.done }" @click="toggleDone(todo)">
                     {{ todo.text }}
                 </span>
                 <!-- Icona di cancellazione -->
