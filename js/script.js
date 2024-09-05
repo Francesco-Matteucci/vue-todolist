@@ -31,13 +31,23 @@ createApp({
                 { text: 'Ordinare un lanciafiamme', done: true },
                 { text: 'Spegnere il sole', done: true },
                 { text: 'Superare la velocità della luce', done: false }
-            ]
+            ],
+            // Variabile per il nuovo todo
+            newTodoText: ''
         };
     },
     methods: {
-        // Funzione per rimuovere il todo
+        // Creo una funzione per rimuovere il todo
         removeTodo(index) {
             this.todos.splice(index, 1);
+        },
+        // Creo una funzione per aggiungere un nuovo todo
+        addTodo() {
+            if (this.newTodoText.trim() !== '') {
+                this.todos.push({ text: this.newTodoText, done: false });
+                // Resetto il campo input
+                this.newTodoText = '';
+            }
         }
     }
 }).mount('#app');
