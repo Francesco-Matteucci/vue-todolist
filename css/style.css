@@ -21,3 +21,14 @@ span {
 .badge {
     min-width: 100px;
 }
+
+.list-enter-active,
+.list-leave-active {
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.list-enter,
+.list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
