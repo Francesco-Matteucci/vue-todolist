@@ -95,3 +95,5 @@ createApp({
 
 
 //Abbiamo utilizzato il todo.text come key, ma se due todo avessero lo stesso testo, ciò potrebbe causare problemi. Quindi aggiungerò un identificatore univoco( un id ) per ogni todo, così da avere maggiore sicurezza.
+
+//!ESERCIZIO FINITO
