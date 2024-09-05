@@ -1,14 +1,23 @@
- span {
-     cursor: pointer;
- }
+.text-decoration-line-through {
+    color: red;
+}
 
- .list-enter-active,
- .list-leave-active {
-     transition: opacity 0.5s, transform 0.5s;
- }
+/* Cursor pointer per il testo cliccabile */
+span {
+    cursor: pointer;
+}
 
- .list-enter,
- .list-leave-to {
-     opacity: 0;
-     transform: translateY(30px);
- }
+/* Stile dell'input */
+.input-group {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Stile dei pulsanti di filtro */
+.btn-group .btn {
+    min-width: 120px;
+}
+
+.badge {
+    min-width: 100px;
+}

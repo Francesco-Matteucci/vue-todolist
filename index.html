@@ -17,9 +17,9 @@
 
 <body>
     <div id="app" class="container mt-5">
-        <h1 class="text-center">Todo List</h1>
+        <h1 class="text-center text-primary mb-4">Todo List</h1>
 
-        <!-- Filtro dei todo  -->
+        <!-- Filtro dei todo -->
         <div class="btn-group my-3 d-flex justify-content-center">
             <button @click="filter = 'all'"
                 :class="['btn', filter === 'all' ? 'btn-primary' : 'btn-outline-primary']">Tutti</button>
@@ -30,29 +30,43 @@
         </div>
 
         <!-- Lista dei todo -->
-        <transition-group name="list" tag="ul" class="list-group">
+        <transition-group name="list" tag="ul" class="list-group shadow-sm rounded mb-4">
             <li v-for="(todo, index) in filteredTodos" :key="todo.id"
-                class="list-group-item d-flex justify-content-between">
+                class="list-group-item d-flex justify-content-between align-items-center">
                 <!-- Se il todo è completato, il testo è barrato -->
-                <span :class="{ 'text-decoration-line-through': todo.done }" @click="toggleDone(todo)">
+                <span class="col-5" :class="{ 'text-decoration-line-through': todo.done }" @click="toggleDone(todo)">
                     {{ todo.text }}
                 </span>
+                <!-- Etichetta di priorità -->
+                <span class="badge col-1" :class="priorityClass(todo.priority)">
+                    {{ todo.priority }}
+                </span>
                 <!-- Icona di cancellazione -->
-                <button @click="removeTodo(index)" class="btn btn-danger btn-sm">
+                <button @click="removeTodo(index)" class="btn btn-outline-danger btn-sm">
                     <i class="bi bi-x-lg"></i>
                 </button>
             </li>
         </transition-group>
-        <p v-if="filteredTodos.length === 0" class="text-center">Hai completato tutte le task, complimenti!</p>
+
+        <!-- Messaggio di task completate -->
+        <p v-if="filteredTodos.length === 0" class="text-center text-success">
+            Complimenti! Hai completato tutte le task <i class="bi bi-award-fill"></i>
+        </p>
+
         <!-- Campo di input e pulsante per aggiungere nuovi todo -->
-        <div class="input-group my-3">
+        <div class="input-group my-3 shadow-sm">
             <input v-model="newTodoText" @keyup.enter="addTodo" type="text" class="form-control"
                 placeholder="Aggiungi una nuova task">
-            <button @click="addTodo" class="btn btn-primary">Aggiungi</button>
+            <select v-model="newTodoPriority" class="form-select">
+                <option value="low-priority">Bassa Priorità</option>
+                <option value="mid-priority">Media Priorità</option>
+                <option value="high-priority">Alta Priorità</option>
+            </select>
+            <button @click="addTodo" class="btn btn-success">Aggiungi</button>
         </div>
 
         <!-- Conteggio dei todo rimanenti -->
-        <p class="text-center mt-3">Task rimanenti: {{ remainingTodos }}</p>
+        <p class="text-center mt-3 text-secondary">Task rimanenti: {{ remainingTodos }}</p>
     </div>
 
     <!-- Vue script -->
