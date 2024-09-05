@@ -32,7 +32,8 @@
             </li>
         </ul>
         <div class="input-group my-3">
-            <input v-model="newTodoText" type="text" class="form-control" placeholder="Aggiungi un nuovo todo">
+            <input v-model="newTodoText" @keyup.enter="addTodo" type="text" class="form-control"
+                placeholder="Aggiungi una nuova task">
             <button @click="addTodo" class="btn btn-primary">Aggiungi</button>
         </div>
     </div>
