@@ -18,3 +18,20 @@ Bonus:
 Buon lavoro e buon divertimento!
 */
 
+const { createApp } = Vue
+
+createApp({
+    data() {
+        return {
+            // Array dei todo
+            todos: [
+                { text: 'Comprare il pane', done: false },
+                { text: 'Comprare il cocomero', done: true },
+                { text: 'Studiare Vue.js', done: false },
+                { text: 'Ordinare un lanciafiamme', done: true },
+                { text: 'Spegnere il sole', done: true },
+                { text: 'Superare la velocità della luce', done: false }
+            ]
+        };
+    }
+}).mount('#app');
